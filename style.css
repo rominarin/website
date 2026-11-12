@@ -7,8 +7,10 @@
 }
 
 :root {
-  --paper: #f4f4f4;
+  --paper: #f3f3f3;
   --ink: #161616;
+  --pad-x: clamp(1.1rem, 4vw, 2.5rem);
+  --drawing: min(56rem, calc(100vw - 2 * var(--pad-x)));
 }
 
 *,
@@ -18,7 +20,14 @@
 }
 
 html {
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: url("paper.png");
+  background-image: image-set(
+    url("paper.webp") type("image/webp"),
+    url("paper.png") type("image/png")
+  );
+  background-repeat: repeat;
+  background-size: calc(var(--drawing) * 960 / 1600);
   color: var(--ink);
 }
 
@@ -28,7 +37,7 @@ body {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1.1rem, 4vw, 2.5rem);
+  padding: clamp(1.5rem, 5vw, 3.5rem) var(--pad-x);
 }
 
 main {
